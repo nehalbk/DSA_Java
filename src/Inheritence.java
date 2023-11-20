@@ -36,7 +36,7 @@ public class Inheritence {
 
 /*Lesson Learnt:
 ---------------------------------------------------------------------------------------------------------------------------------
-Variables in Java Do Not Follow Polymorphism and Overriding
+Variables in Java Do Not Follow Polymorphism and Overriding				[Source: GeeksForGeeks]
 ---------------------------------------------------------------------------------------------------------------------------------
 	Variables in Java do not follow polymorphism. Overriding is only applicable to methods but not to variables. 
 	In Java, if the child and parent class both have a variable with the same name, 
