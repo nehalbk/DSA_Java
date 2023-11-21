@@ -31,8 +31,9 @@ class Vehicle{
 	//Setting value of private variable that is not set by constructor
 	void setParentParameter(String Type) {
 		this.type2=Type;
-		
 		//printing of this class is taken in derived class Bike using super
+		//if we use print(); here it will execute print function of R15 
+		//as it is most child class and it overrides all upper class implementations
 	}
 }
 
@@ -81,6 +82,8 @@ class Bike extends Vehicle{
 		this.model2=Model;
 		
 		//printing of this class is taken in derived class R15 using super
+		//if we use print(); here it will execute print function of R15 
+		//as it is most child class and it overrides all upper class implementations
 	}
 	
 }
