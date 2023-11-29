@@ -34,7 +34,7 @@ public class ExceptionHandling {
 		System.out.println(e.getCause());			//for developers
 		e.printStackTrace();
 	} catch (RuntimeException  e) {				//Catch higher order second specific error second
-		e.printStackTrace();
+		e.printStackTrace();					//All details
 		System.out.println(e.getCause().getMessage());
 	} catch(Exception e) {
 		System.out.println(e.getMessage());		//Catch generalized error last
