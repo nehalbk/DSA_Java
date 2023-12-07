@@ -1,3 +1,4 @@
+package BasicJavaFeaturePrograms;
 enum insuranceType{
 			LIFE,NON_LIFE,EMPLOYEE_BENEFITS
 		}

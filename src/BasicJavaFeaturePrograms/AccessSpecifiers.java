@@ -1,3 +1,4 @@
+package BasicJavaFeaturePrograms;
 class classA{
 	
 	public int a=5;
