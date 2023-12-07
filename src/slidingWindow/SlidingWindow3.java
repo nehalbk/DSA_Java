@@ -19,6 +19,8 @@
 
 package slidingWindow;
 
+import java.util.HashSet;
+
 public class SlidingWindow3 {
 
 	public static void main(String[] args) {
@@ -34,27 +36,56 @@ public class SlidingWindow3 {
 		System.out.println(containsNearbyDuplicate(nums,k));
 
 	}
+
+//	Optimised solution with sliding window
+	public static boolean containsNearbyDuplicate(int[] nums, int k) {
+        k=Math.min(k,nums.length);
+ 		HashSet<Integer> window=new HashSet<>();
+		
+		for(int i=0;i<k;i++) {
+			if(window.contains(nums[i])) {
+				return true;
+			}else {
+				window.add(nums[i]);
+			}
+		}
+		
+		for(int i=k;i<nums.length;i++) {
+			if(window.contains(nums[i])) {
+				return true;
+			}else {
+				window.add(nums[i]);
+				window.remove(nums[i-k]);
+			}
+		}
+		return false;
+
+	}
+
 	
-    public static boolean containsNearbyDuplicate(int[] nums, int k) {
-        k=Math.min(nums.length,k);
-        if(nums.length==1){
-            return false;
-        }       	
-        if(k==nums.length && k==2) {
-            if(nums[0]==nums[1])
-        		return true;
-        }
-        
-        for(int i=0;i<nums.length;i++) {
-            for(int j=i+1;j<nums.length;j++) {
-                if(nums[i]==nums[j] && (j-i)<=k) {
-                    return true;
-                }
-            }
-        }
-            
-        	return false;
-    }
+	
+	
+//	  Brute Force Method:	
+//    public static boolean containsNearbyDuplicate(int[] nums, int k) {
+//        k=Math.min(nums.length,k);
+//        if(nums.length==1){
+//            return false;
+//        }       	
+//        if(k==nums.length && k==2) {
+//            if(nums[0]==nums[1])
+//        		return true;
+//        }
+//        
+//        for(int i=0;i<nums.length;i++) {
+//            for(int j=i+1;j<nums.length;j++) {
+//                if(nums[i]==nums[j] && (j-i)<=k) {
+//                    return true;
+//                }
+//            }
+//        }
+//            
+//        	return false;
+//    }
     
 
 }
