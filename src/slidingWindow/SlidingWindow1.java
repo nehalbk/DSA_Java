@@ -1,3 +1,4 @@
+package slidingWindow;
 /* SLIDING WINDOW ALGORITHM
  * [Source] : https://www.geeksforgeeks.org/window-sliding-technique/
  * 
