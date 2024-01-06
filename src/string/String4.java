@@ -26,30 +26,56 @@
 	Explanation: s is an empty string "" after removing non-alphanumeric characters.
 	Since an empty string reads the same forward and backward, it is a palindrome.
  */
-
+	
 package string;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class String4 {
 
 	public static void main(String[] args) {
-		System.out.println(isPalindrome(" "));
+		System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
 
 	}
-    public static boolean isPalindrome(String s) {
-    	List<Character> sc= new ArrayList<>();
-    	for(int i=0;i<s.length();i++) {
-    		if(Character.isLetter(s.charAt(i)) && s.charAt(i)!=' ') {
-    			sc.add(s.toLowerCase().charAt(i));
+    
+//	public static boolean isPalindrome(String s) {
+//    	int left=0,right=s.length()-1;
+//    	s=s.toLowerCase();
+//    	while(left<right) {
+//    		if(!Character.isLetterOrDigit(s.charAt(left))) {
+//        			left++;
+//        		}else if(!Character.isLetterOrDigit(s.charAt(right))) {
+//        			right--;
+//    		}else if(s.charAt(right)!=s.charAt(left)) {
+//    			return false;
+//    		}else {
+//    			left++;
+//    			right--;
+//    		}
+//    		System.out.println(s.charAt(left)+" "+ s.charAt(right));
+//    		
+//
+//    	}
+// 
+//    	return true;
+//    }
+	
+	public static boolean isPalindrome(String s) {
+    	int left=0,right=s.length()-1;
+    	s=s.toLowerCase();
+    	while(left<right) {
+    		if(!Character.isLetterOrDigit(s.charAt(left))) {
+        			left++;
+        			continue;
     		}
-    	}
-    	//sc.stream().forEach(x->System.out.println(x));
-    	for(int i=0;i<sc.size()/2;i++) {
-    		if(sc.get(i)!= sc.get(sc.size()-1-i)) {
+        	if(!Character.isLetterOrDigit(s.charAt(right))) {
+        			right--;
+        			continue;
+        	}
+    		if(s.charAt(right)!=s.charAt(left)) {
     			return false;
     		}
+    		left++;
+    		right--;
+    		
     	}
  
     	return true;
