@@ -1,39 +1,42 @@
 /*
- * Question : [Source - Leetcode : https://leetcode.com/problems/reverse-words-in-a-string/]
+ * Question : [Source - Leetcode : https://leetcode.com/problems/plus-one/]
  * 
- * 151. Reverse Words in a String
+ * 66. Plus One
 	
-	Given an input string s, reverse the order of the words.
+	You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
 	
-	A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
-	
-	Return a string of the words in reverse order concatenated by a single space.
-	
-	Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+	Increment the large integer by one and return the resulting array of digits.
 	
 	 
 	
 	Example 1:
 	
-	Input: s = "the sky is blue"
-	Output: "blue is sky the"
+	Input: digits = [1,2,3]
+	Output: [1,2,4]
+	Explanation: The array represents the integer 123.
+	Incrementing by one gives 123 + 1 = 124.
+	Thus, the result should be [1,2,4].
 	Example 2:
 	
-	Input: s = "  hello world  "
-	Output: "world hello"
-	Explanation: Your reversed string should not contain leading or trailing spaces.
+	Input: digits = [4,3,2,1]
+	Output: [4,3,2,2]
+	Explanation: The array represents the integer 4321.
+	Incrementing by one gives 4321 + 1 = 4322.
+	Thus, the result should be [4,3,2,2].
 	Example 3:
 	
-	Input: s = "a good   example"
-	Output: "example good a"
-	Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+	Input: digits = [9]
+	Output: [1,0]
+	Explanation: The array represents the integer 9.
+	Incrementing by one gives 9 + 1 = 10.
+	Thus, the result should be [1,0].
 	 
 	
 	Constraints:
 	
-	1 <= s.length <= 104
-	s contains English letters (upper-case and lower-case), digits, and spaces ' '.
-	There is at least one word in s.
+	1 <= digits.length <= 100
+	0 <= digits[i] <= 9
+	digits does not contain any leading 0's.
  */
 	
 package string;
@@ -41,20 +44,47 @@ package string;
 public class String5 {
 
 	public static void main(String[] args) {
-		System.out.println(reverseWords("  hello world  "));
+		int[] digits = {9,9,9};
+		System.out.println(plusOne(digits));
 
 	}
 	
-	public static String reverseWords(String s) {
-		String[] split_s =s.split(" ");
-		String res="";
-        for(int i=split_s.length-1;i>=0;i--){
-        	if(!split_s[i].isBlank()) {
-        		res=String.join(" ",res, split_s[i]);
-        		System.out.println(res);
-        	}
+	public static int[] plusOne(int[] digits) {
+		boolean carry=false;
+        int prev=1;
+        for(int i=digits.length-1;i>=0;i--){
+            if((prev+digits[i])>9) carry =true;
+            else carry= false;
+            prev=(digits[i]+prev)/10;
         }
-    	return res.trim();
+        if(carry){
+            int[] res=new int[digits.length+1];
+            prev=1;
+            for(int i=res.length-1;i>0;i--){
+                res[i]=(digits[i-1]+prev)%10;
+                prev=(digits[i-1]+prev)/10;
+            }
+            res[0]=1;
+            for(int i:res) {
+            	System.out.println(i);
+            }
+            return res;
+        }else{
+        	int[] res=new int[digits.length];
+            prev=1;
+            for(int i=res.length-1;i>=0;i--){
+                res[i]=(digits[i]+prev)%10;
+                prev=(digits[i]+prev)/10;
+            }
+            for(int i:res) {
+            	System.out.println(i);
+            }
+            return res;
+        }
+
+
+        
+        
     }
 
    
