@@ -1,28 +1,52 @@
 /*
- * Question : [Source - Leetcode : https://leetcode.com/problems/reverse-string/]
+ * Question : [Source - Leetcode : https://leetcode.com/problems/final-value-of-variable-after-performing-operations/]
  * 
- * 344. Reverse String
+ * 2011. Final Value of Variable After Performing Operations
 
-	Write a function that reverses a string. The input string is given as an array of characters s.
+	There is a programming language with only four operations and one variable X:
 	
-	You must do this by modifying the input array in-place with O(1) extra memory.
+	++X and X++ increments the value of the variable X by 1.
+	--X and X-- decrements the value of the variable X by 1.
+	Initially, the value of X is 0.
+	
+	Given an array of strings operations containing a list of operations, return the final value of X after performing all the operations.
 	
 	 
 	
 	Example 1:
 	
-	Input: s = ["h","e","l","l","o"]
-	Output: ["o","l","l","e","h"]
+	Input: operations = ["--X","X++","X++"]
+	Output: 1
+	Explanation: The operations are performed as follows:
+	Initially, X = 0.
+	--X: X is decremented by 1, X =  0 - 1 = -1.
+	X++: X is incremented by 1, X = -1 + 1 =  0.
+	X++: X is incremented by 1, X =  0 + 1 =  1.
 	Example 2:
 	
-	Input: s = ["H","a","n","n","a","h"]
-	Output: ["h","a","n","n","a","H"]
+	Input: operations = ["++X","++X","X++"]
+	Output: 3
+	Explanation: The operations are performed as follows:
+	Initially, X = 0.
+	++X: X is incremented by 1, X = 0 + 1 = 1.
+	++X: X is incremented by 1, X = 1 + 1 = 2.
+	X++: X is incremented by 1, X = 2 + 1 = 3.
+	Example 3:
+	
+	Input: operations = ["X++","++X","--X","X--"]
+	Output: 0
+	Explanation: The operations are performed as follows:
+	Initially, X = 0.
+	X++: X is incremented by 1, X = 0 + 1 = 1.
+	++X: X is incremented by 1, X = 1 + 1 = 2.
+	--X: X is decremented by 1, X = 2 - 1 = 1.
+	X--: X is decremented by 1, X = 1 - 1 = 0.
 	 
 	
 	Constraints:
 	
-	1 <= s.length <= 105
-	s[i] is a printable ascii character.
+	1 <= operations.length <= 100
+	operations[i] will be either "++X", "X++", "--X", or "X--".
  */
 	
 package string;
@@ -30,21 +54,20 @@ package string;
 public class String6 {
 
 	public static void main(String[] args) {
-		char[] s = {'h','e','l','l','o'};
-		for(char i:reverseString(s)) {
-
-			System.out.print(i);
-		}
-
+		String[] operations = {"++X","++X","X++"};
+		System.out.print(finalValueAfterOperations(operations));
 	}
 	
-	public static char[] reverseString(char[] s) {
-		for(int i=0,j=s.length-1;i<j;i++,j--){
-            char temp=s[i];
-            s[i]=s[j];
-            s[j]=temp;
-        }
-		return s;
+	public static int finalValueAfterOperations(String[] operations) {
+		int x=0;
+		for(String i:operations) {
+			if(i.charAt(1)=='+') {
+				x++;
+			}else {
+				x--;
+			}
+		}
+		return x;
     }
 
    
