@@ -34,7 +34,7 @@ import java.util.List;
 public class Arrays5 {
 
 	public static void main(String[] args) {
-		int  numRows = 6;
+		int  numRows = 7;
 		System.out.println(generate(numRows));
 	}
 
